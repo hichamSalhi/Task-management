@@ -1,0 +1,12 @@
+.card {
+    background-color: aliceblue;
+    width: fit-content;
+    border: solid 0.3px;
+    padding: 3px 3px 3px 3px;
+}
+
+.card:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}

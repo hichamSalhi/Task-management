@@ -2,6 +2,7 @@ package com.hicham.taskmanagement.Controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hicham.taskmanagement.Entity.Task;
 import com.hicham.taskmanagement.Services.TaskServices;
 
-
+@CrossOrigin("*")
 @RestController
 public class TaskControllers {
     public TaskServices taskServices;
