@@ -6,7 +6,7 @@ services:
         SPRING_DATASOURCE_URL: jdbc:postgresql://ep-calm-sky-abnvj4mc-pooler.eu-west-2.aws.neon.tech/taskmanagement
         SPRING_DATASOURCE_USERNAME: neondb_owner
         SPRING_DATASOURCE_PASSWORD: npg_Z7dspAIP6yau
-        SPRING_JPA_HIBERNATE_DDL_AUTO: update
+        SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
         SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
       ports:
         - "8080:8080"
