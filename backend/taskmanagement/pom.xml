@@ -65,15 +65,6 @@
 			<version>4.0.0-M1</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<version>3.2.5</version>
-			<configuration>
-				<argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
-			</configuration>
-		</plugin>
 
 		<!-- This dependency should install an in memory H2 Database and it´s ideal for tests-->
 		<dependency>
@@ -90,6 +81,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+				<configuration>
+					<argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
