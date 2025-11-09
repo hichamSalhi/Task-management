@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hicham.taskmanagement.Entity.Task;
@@ -29,6 +30,11 @@ public class TaskControllers {
 
     @GetMapping("/task/{id}")
     public Task getTaskById(@PathVariable (value = "id") Long id) {
+        return taskServices.getTaskById(id);
+    }
+
+    @GetMapping("/task")
+    public Task getTaskByIdRequestParam(@RequestParam Long id) {
         return taskServices.getTaskById(id);
     }
 
