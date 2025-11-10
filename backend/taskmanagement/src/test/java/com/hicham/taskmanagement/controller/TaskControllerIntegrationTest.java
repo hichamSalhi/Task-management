@@ -12,7 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.hicham.taskmanagement.Entity.Task;
+import com.hicham.taskmanagement.Entity.TaskStatus;
+import com.hicham.taskmanagement.Entity.User;
 import com.hicham.taskmanagement.Repository.ITaskRepository;
+import com.hicham.taskmanagement.Repository.IUserRepository;
 
 @SpringBootTest // Boots the full application for testing purposes
 @AutoConfigureMockMvc //inject a fake HTTP client
@@ -23,10 +26,15 @@ public class TaskControllerIntegrationTest {
     @Autowired
     private ITaskRepository iTaskRepository;
 
+    @Autowired
+    private IUserRepository userRepository;
+
     @BeforeEach
     void setUp() {
         iTaskRepository.deleteAll();
-        iTaskRepository.save(new Task("initial task", "description for initial task"));
+        User user = new User();
+        userRepository.save(user);
+        iTaskRepository.save(new Task("initial task", "description for initial task", TaskStatus.PENDING, user));
     }
 
     @Test
@@ -57,8 +65,10 @@ public class TaskControllerIntegrationTest {
 
     @Test
     void shouldReturnTaskById() throws Exception {
+        User user = new User();
+        userRepository.save(user);
         //Given
-        Task insideTask = iTaskRepository.save(new Task("inside task", "description for inside task"));
+        Task insideTask = iTaskRepository.save(new Task("inside task", "description for inside task", TaskStatus.PENDING, user));
         //When + Then
         mockMvc.perform(get("/task/{id}", insideTask.getId()))
                .andExpect(status().isOk())
@@ -67,8 +77,10 @@ public class TaskControllerIntegrationTest {
 
     @Test
     void shouldReturnTaskByIdRequestParam() throws Exception {
+        User user = new User();
+        userRepository.save(user);
         //Given 
-        Task insideTask = iTaskRepository.save(new Task("inside task", "Description for inside task"));
+        Task insideTask = iTaskRepository.save(new Task("inside task", "Description for inside task", TaskStatus.PENDING, user));
 
         //When + then
         mockMvc.perform(get("/task").param("id", insideTask.getId().toString()))
