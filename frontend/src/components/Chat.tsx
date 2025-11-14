@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SockJS from "sockjs-client"
 import {over} from "stompjs"
@@ -7,6 +8,8 @@ let stompClient: any = null;
 export default function Chat() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{sender: string, content: string}[]>([]);
+  const [sender, setSender] = useState<string>("unknown");
+  const [userNameEntered, setUserNameEntered] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("https://task-management-pbp3.onrender.com/chat/history")
@@ -25,7 +28,8 @@ export default function Chat() {
 
   const sendMessage = () => {
     if (message.trim() !== "") {
-      stompClient.send("/app/chat", {}, JSON.stringify({ sender: "Hicham", content: message }));
+      
+      stompClient.send("/app/chat", {}, JSON.stringify({ sender: sender, content: message }));
       setMessage("");
     }
   };
@@ -33,6 +37,12 @@ export default function Chat() {
   return (
     <div style={{ padding: 20 }}>
       <h2>Real-Time Chat</h2>
+      <input 
+        type="text"
+        value={sender}
+        onChange={(e) => setSender(e.target.value)}
+        placeholder="Type your username to chat or stay unknown"
+        />
       <div style={{ height: "200px", overflowY: "auto", border: "1px solid #ccc", padding: 10 }}>
         {messages.map((m, i) => (
           <div key={i}><strong>{m.sender}: </strong>{m.content}</div>

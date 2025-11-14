@@ -24,7 +24,7 @@ const Card = () => {
                 (tasks).map((task : Task) => (
                     <div className="card" key={task.id}>
                     <h2>Task Title : {task.title}</h2>
-                    <h3>Created by : {task.taskStatus}</h3>
+                    <h3>Task status : {task.taskStatus}</h3>
                     <p>{task.description}</p>
                     </div>
                 ))
