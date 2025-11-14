@@ -37,11 +37,11 @@ export default function Chat() {
   return (
     <div style={{ padding: 20 }}>
       <h2>Real-Time Chat</h2>
+      <text>Type your username to chat or stay unknown</text>
       <input 
         type="text"
         value={sender}
         onChange={(e) => setSender(e.target.value)}
-        placeholder="Type your username to chat or stay unknown"
         />
       <div style={{ height: "200px", overflowY: "auto", border: "1px solid #ccc", padding: 10 }}>
         {messages.map((m, i) => (
