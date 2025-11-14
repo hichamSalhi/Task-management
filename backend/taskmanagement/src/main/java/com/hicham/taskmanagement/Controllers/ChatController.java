@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hicham.taskmanagement.Entity.ChatMessage;
 import com.hicham.taskmanagement.Repository.ChatMessageRepository;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+@CrossOrigin(origins = "*") 
 @RestController
 public class ChatController {
 
