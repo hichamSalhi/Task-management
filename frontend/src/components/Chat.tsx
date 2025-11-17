@@ -7,7 +7,7 @@ let stompClient: any = null;
 
 export default function Chat() {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<{sender: string, content: string, time: Date}[]>([]);
+  const [messages, setMessages] = useState<{sender: string, content: string, timestamp: Date}[]>([]);
   const [sender, setSender] = useState<string>("unknown");
   const [userNameEntered, setUserNameEntered] = useState<boolean>(false);
 
@@ -45,7 +45,7 @@ export default function Chat() {
         />
       <div style={{ height: "200px", overflowY: "auto", border: "1px solid #ccc", padding: 10 }}>
         {messages.map((m, i) => (
-          <div key={i}><strong>{m.sender}: </strong>{m.content} <p>at: {m.time.toString()}</p></div>
+          <div key={i}><strong>{m.sender}: </strong>{m.content} <p>at: {m.timestamp.toString()}</p></div>
         ))}
       </div>
       <input
