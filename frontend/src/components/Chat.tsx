@@ -45,7 +45,7 @@ export default function Chat() {
         />
       <div style={{ height: "200px", overflowY: "auto", border: "1px solid #ccc", padding: 10 }}>
         {messages.map((m, i) => (
-          <div key={i}><strong>{m.sender}: </strong>{m.content} <p>at: {m.timestamp.toString()}</p></div>
+          <div key={i}><strong>{m.sender}: </strong>{m.content} <p>at: </p></div>
         ))}
       </div>
       <input
